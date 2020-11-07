@@ -6,7 +6,7 @@ const update_ui = (data) => {
 
     document.getElementById('not-credentials').style.display = 'none';
     document.getElementById('done').style.display = 'block';
-    document.getElementById('message').innerHTML = message;
+    document.getElementById('message').appendChild(document.createTextNode(message));
     document.getElementById('message').style.color = color;
 };
 

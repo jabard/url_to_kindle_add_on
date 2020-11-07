@@ -4,7 +4,9 @@ const construct_recent_urls_list = (recent_urls) => {
     }
 
     const list_element = document.querySelector('#not-credentials ul');
-    list_element.innerHTML = '';
+    while (list_element.firstChild) {
+        list_element.removeChild(list_element.firstChild);
+    }
 
     recent_urls.forEach(recent_url => {
         const title = recent_url.title.substring(0, 31);
@@ -12,10 +14,10 @@ const construct_recent_urls_list = (recent_urls) => {
 
         const new_a = document.createElement('a');
         new_a.href = recent_url.url;
-        new_a.innerHTML = `${title}${dots}`;
+        new_a.appendChild(document.createTextNode(`${title}${dots}`));
 
         const new_li = document.createElement('li');
-        new_li.innerHTML = '&gt; ';
+        new_li.appendChild(document.createTextNode('> '));
         new_li.appendChild(new_a);
 
         list_element.prepend(new_li);
