@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Url to Kindle",
+    "version": "0.1",
+    "description": "Sends the current URL as a PDF to your Kindle device",
+    "icons": {
+        "48": "icons/guac-48.jpg"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "storage"
+    ],
+    "browser_action": {
+        "browser_style": true,
+        "default_icon": "icons/guac-48.jpg",
+        "default_title": "URL to Kindle",
+        "default_popup": "popup/browser.html"
+    },
+    "page_action": {
+        "browser_style": true,
+        "default_icon": "icons/guac-48.jpg",
+        "default_title": "URL to Kindle",
+        "show_matches": ["<all_urls>"],
+        "default_popup": "popup/page.html"
+    }
+}

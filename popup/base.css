@@ -1,0 +1,28 @@
+body, section, h1, h3 {
+    text-align: center;
+}
+
+.form-group {
+    padding: 10px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    border-style: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    width: 100%;
+}
+
+#store-credentials {
+    border-radius: 5%;
+    width: 100%;
+    height: 50px;
+    background-color: #74e88d;
+    color: white;
+    text-align: center;
+    font-size: 170%;
+}

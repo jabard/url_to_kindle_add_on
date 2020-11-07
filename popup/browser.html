@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="base.css"/>
+        <link rel="stylesheet" href="browser.css"/>
+    </head>
+
+    <body>
+        <h1>URL to Kindle</h1>
+
+        <section id="not-credentials">
+            <h3>Recent URLs:</h3>
+            <ul>
+            </ul>
+            <button type="button" id="update-credentials">Update credentials</button>
+        </section>
+
+        <form id="credentials">
+            <div class="form-group">
+                <label for="email">Your kindle email</label>
+                <input type="email" id="email" placeholder="example@kindle.com" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Ask the admin" />
+            </div>
+
+            <button type="submit" id="store-credentials">Save</button>
+        </form>
+
+        <script src="util.js"></script>
+        <script src="browser.js"></script>
+    </body>
+</html>
