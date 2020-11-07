@@ -1,4 +1,4 @@
-const tunnel_url = 'http://localhost:3000';
+const tunnel_url = 'https://3de052fad1.loca.lt';
 
 const update_ui = (data) => {
     const message = data.success || data.error;
