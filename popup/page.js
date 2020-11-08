@@ -10,10 +10,19 @@ const update_ui = (data) => {
     document.getElementById('message').style.color = color;
 };
 
-const display_error_message = (error) => {
-    update_ui({
-        error
-    });
+const update_ui_with_link_to_localt = () => {
+    const a = document.createElement('a');
+    a.href = tunnel_url;
+    a.appendChild(document.createTextNode(tunnel_url));
+
+    const p = document.createElement('p');
+    p.appendChild(document.createTextNode('Sorry, but you may need to go to '));
+    p.appendChild(a);
+    p.appendChild(document.createTextNode(' to set the tunnel\'s cookie.'));
+
+    document.getElementById('not-credentials').style.display = 'none';
+    document.getElementById('done').style.display = 'block';
+    document.getElementById('message').appendChild(p);
 }
 
 const send_to_kindle = async (email, password) => {
@@ -23,19 +32,25 @@ const send_to_kindle = async (email, password) => {
 
     const tabs = await browser.tabs.query({active: true, currentWindow: true});
     if (!tabs) {
-        display_error_message('Not possible to fetch tabs');
+        update_ui({
+            error: 'Not possible to fetch tabs'
+        });
         return;
     }
 
     const current_tab = tabs[0];
     if(!current_tab) {
-        display_error_message('Not possible to fetch current tab');
+        update_ui({
+            error: 'Not possible to fetch current tab'
+        });
         return;
     }
 
     const url = current_tab.url;
     if (!url) {
-        display_error_message('Not possible to fetch current URL');
+        update_ui({
+            error: 'Not possible to fetch current URL'
+        });
         return;
     }
 
@@ -62,9 +77,7 @@ const send_to_kindle = async (email, password) => {
             return response.json();
         })
         .then(data => update_ui(data))
-        .catch(err => display_error_message(
-            `Sorry, but you may need to go to <a href="${tunnel_url}">${tunnel_url}</a> to set the tunnel's cookie.`
-        ));
+        .catch(update_ui_with_link_to_localt);
 }
 
 document
